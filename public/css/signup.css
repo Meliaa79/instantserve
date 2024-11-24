@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 800px; /* Lebar lebih kecil */
+    height: 80vh; /* Tinggi lebih kecil */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.img-container {
+    flex: 1;
+    height: 100%;
+    background: linear-gradient(135deg, #81D8D0, #E2E2E2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 0 0 10px;
+}
+
+.img-container img {
+    width: 70%; /* Lebih kecil dari sebelumnya */
+    height: auto;
+}
+
+.login-container {
+    flex: 1;
+    padding: 40px; /* Lebih sedikit padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+form h2 {
+    font-size: 2.5rem; /* Ukuran font lebih kecil */
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.input-div {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px; /* Mengurangi jarak antar input */
+    padding: 10px 0;
+    border-bottom: 2px solid #d9d9d9;
+    display: flex;
+    align-items: center;
+}
+
+.input-div .i {
+    min-width: 30px; /* Ukuran ikon lebih kecil */
+    text-align: center;
+    color: #d9d9d9;
+}
+
+.input-div .input {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    color: #333;
+    font-size: 1rem; /* Ukuran font lebih kecil */
+}
+
+.input-div h5 {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s;
+    font-size: 0.9rem; /* Ukuran label lebih kecil */
+}
+
+.input-div.focus h5 {
+    top: -5px;
+    font-size: 10px;
+    color: #81D8D0;
+}
+
+.input-div.focus .i {
+    color: #81D8D0;
+}
+
+.btn {
+    width: 100%; /* Lebar penuh, bisa diubah sesuai kebutuhan */
+    max-width: 400px; /* Lebar maksimum tombol */
+    height: 50px; /* Tinggi tombol lebih kecil */
+    border-radius: 30px;
+    background-image: linear-gradient(to right, #32be8f, #81D8D0, #32be8f);
+    background-size: 200%;
+    color: white;
+    font-size: 1.2rem; /* Ukuran font tombol lebih kecil */
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-position 0.5s;
+    margin-top: 40px;
+}
+
+.btn:hover {
+    background-position: right;
+}

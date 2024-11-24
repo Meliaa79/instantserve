@@ -1,0 +1,286 @@
+:root {
+    --pr-color : #81D8D0;
+}
+
+body {
+    font-family : 'Poppins', sans-serif;
+    background-color: #F3FFF4;
+}
+
+/* Navbar Section */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff !important; /* Menambahkan !important */
+}
+
+
+/* Warna font navbar default (untuk home) */
+.nav-link {
+    color: #fff !important;
+    font-weight: 400;
+}
+
+/* Gaya font navbar ketika section selain Home */
+.nav-link.active {
+    color: #fff !important;
+    font-weight: 700; /* Bold */
+}
+
+.button-primary, .button-secondary {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 150px; /* Menetapkan lebar yang sama untuk kedua tombol */
+    height: 50px; /* Menetapkan tinggi yang sama untuk kedua tombol */
+    font-size: 16px;
+    font-weight: 700; /* Mengatur bobot font menjadi lebih tebal */
+    border-radius: 5px; /* Sudut melengkung untuk tombol */
+    display: inline-block; /* Memungkinkan pengaturan lebar dan tinggi */
+    text-align: center; /* Mengatur teks agar berada di tengah */
+    line-height: 50px; /* Memastikan teks berada di tengah secara vertikal */
+    margin: 10px; /* Menambahkan jarak antara tombol */
+}
+
+.button-primary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #81D8D0; /* Warna border */
+}
+
+.button-primary:hover {
+    background-color: #4fc6b3; /* Warna tombol saat hover */
+    color: #fff; /* Warna teks saat hover */
+}
+
+.button-secondary {
+    background-color: #fff; /* Latar belakang putih */
+    color: #81D8D0; /* Warna teks */
+    border: none; /* Tidak ada border */
+}
+
+.button-secondary:hover {
+    background-color: #81D8D0; /* Warna latar belakang saat hover */
+    color: white; /* Warna teks saat hover */
+}
+
+
+/* Hero Section */
+
+#hero {
+    background: linear-gradient(135deg, #81D8D0, #E2E2E2); /* Menambahkan gradient */
+    height: 100vh;
+    width: 100%;
+}
+
+
+.img-hero {
+    height: 100%;
+}
+
+.hero-tagline h1 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 50px;
+}
+
+.hero-tagline p {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 60px;
+    margin-top: 20px;
+    line-height: 30px;
+    width: 85%;
+}
+
+.button-lg-primary {
+    width: 237px;
+    height: 70px;
+    background-color: #fff;
+    color: #81D8D0;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-lg-primary:hover {
+    background-color: #005757; /* Warna tombol saat dihover */
+}
+
+/* Layanan Section */
+
+#layanan {
+    padding: 100px 0;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--pr-color);
+}
+
+.sub-title {
+    font-size: 18px;
+    color: #000;
+}
+
+.card-layanan {
+    width: 100%;
+    height: 313px;
+    border-radius: 5px;
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.05);
+    transition: all .3s ease-in-out;
+}
+
+.circle-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--pr-color);
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+}
+
+.card-layanan h3 {
+    color: var(--pr-color);
+    font-size: 24px;
+    transition: all .3s ease-in-out;
+}
+
+.card-layanan p {
+    color: var(--pr-color);
+    font-size: 14px;
+    transition: all .3s ease-in-out;
+}
+
+/* Hover */
+.card-layanan:hover {
+    background: #81D8D0;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-layanan:hover .circle-icon {
+    background-color: #fff;
+}
+
+.card-layanan:hover h3 {
+    color: #000;
+}
+
+.card-layanan:hover p {
+    color: #000;
+}
+
+/* What is InstantServe Section */
+/* Section about What is InstantServe */
+#about {
+    background-color: #e6f7f7;
+    min-height: 100vh; /* Membuat section memenuhi layar penuh */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px 0; /* Menambah jarak vertikal */
+  }
+  
+  #about .container {
+    flex-grow: 1; /* Membuat konten berada di tengah */
+  }
+  
+  
+  .custom-button {
+    background-color: transparent;
+    color: #008080; /* Warna tombol default */
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    border: 2px solid #008080; /* Border hijau */
+    border-radius: 50px; /* Membuat tombol oval */
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color: #008080; /* Background saat hover */
+    color: #fff; /* Teks berubah menjadi putih saat hover */
+}
+  
+  /* Center the "Want to see more?" section */
+  #about .row.justify-content-center {
+    margin-top: 10px; /* Mengurangi jarak antara bagian atas */
+    margin-bottom: 50px; /* Tambahkan sedikit jarak bawah jika diperlukan */
+}
+
+  
+ 
+
+  
+
+/* Footer Contact Section */
+.footer {
+    background-color: #006666;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer img {
+    margin-bottom: 20px;
+}
+
+.footer p {
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.8;
+}
+
+.footer .list-inline-item {
+    margin-right: 10px;
+}
+
+.footer .list-inline-item a img {
+    transition: transform 0.3s;
+}
+
+.footer .list-inline-item a:hover img {
+    transform: scale(1.2); /* Zoom effect on hover */
+}
+
+.footer .text-md-end {
+    text-align: right;
+}
+
+.footer .list-inline {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.footer .list-inline-item {
+    display: inline-block;
+}
+
+.footer p.mt-3 {
+    font-size: 14px;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    #about .col-md-4, 
+    #about .col-md-8 {
+        text-align: center;
+    }
+
+    .footer .text-md-end {
+        text-align: center;
+    }
+
+    .footer .list-inline {
+        text-align: center;
+    }
+}
+
+.social-media {
+    padding-top: 125px;
+    margin-right: 10px;
+}
+

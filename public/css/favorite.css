@@ -1,0 +1,197 @@
+/* Apply Turquoise Background to Top Section */
+header, .navbar {
+    background-color: #40E0D0; /* Turquoise color */
+}
+
+/* Adjust text color if needed */
+header a, .navbar a {
+    color: white; /* Makes text white for better contrast */
+}
+/* Font Styles */
+body {
+    font-family: 'Open Sans', sans-serif; /* Font utama */
+}
+
+/* Gambar */
+img {
+    display: block; /* Mengubah gambar menjadi elemen blok */
+    max-width: 100%; /* Memastikan gambar responsif */
+    height: auto; /* Memastikan rasio aspek tetap terjaga */
+}
+
+/* Navbar */
+#menu-toggle:checked + #menu {
+    display: block; /* Menampilkan menu saat toggle di-check */
+}
+
+.hover\:grow {
+    transition: all 0.3s; /* Transisi halus untuk hover */
+    transform: scale(1); /* Transformasi default */
+}
+
+.hover\:grow:hover {
+    transform: scale(1.02); /* Sedikit membesar saat hover */
+}
+
+/* Carousel Styles */
+.carousel-open:checked + .carousel-item {
+    position: static; /* Mengatur posisi carousel */
+    opacity: 100; /* Mengatur opasitas */
+}
+
+.carousel-item {
+    transition: opacity 0.6s ease-out; /* Transisi opasitas untuk carousel */
+}
+
+/* Carousel Controls */
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3 {
+    display: block; /* Menampilkan kontrol carousel */
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    list-style: none; /* Menghilangkan bullet list */
+    margin: 0; /* Menghilangkan margin */
+    padding: 0; /* Menghilangkan padding */
+    position: absolute; /* Posisi absolut */
+    bottom: 2%; /* Posisi dari bawah */
+    left: 0; /* Posisi dari kiri */
+    right: 0; /* Posisi dari kanan */
+    text-align: center; /* Pusatkan indikator */
+    z-index: 10; /* Layer di atas elemen lain */
+}
+
+/* Gaya untuk Indikator Aktif */
+#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+    color: #000; /* Warna aktif untuk indikator */
+}
+
+/* Slider Styles */
+.slider-container {
+    position: relative; /* Posisi relatif untuk kontrol slider */
+    overflow: hidden; /* Menghilangkan elemen yang overflow */
+    max-width: 800px; /* Lebar maksimal kontainer */
+    margin: auto; /* Pusatkan kontainer */
+}
+
+.slider {
+    display: flex; /* Flexbox untuk slider */
+    transition: transform 0.5s ease; /* Transisi halus untuk perpindahan slider */
+}
+
+.slide {
+    min-width: 100%; /* Setiap slide memanfaatkan lebar penuh */
+    box-sizing: border-box; /* Mengatur box-sizing */
+}
+
+/* Kontrol Slider */
+.prev, .next {
+    position: absolute; /* Posisi absolut untuk tombol */
+    top: 50%; /* Posisikan di tengah vertikal */
+    transform: translateY(-50%); /* Pindahkan tombol ke tengah */
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    color: white; /* Warna teks putih */
+    border: none; /* Hilangkan border */
+    padding: 10px; /* Padding untuk tombol */
+    cursor: pointer; /* Kursor pointer saat hover */
+    font-size: 24px; /* Ukuran font untuk tombol */
+}
+
+.prev {
+    left: 10px; /* Posisi tombol prev di kiri */
+}
+
+.next {
+    right: 10px; /* Posisi tombol next di kanan */
+}
+
+/* Caption untuk Gambar */
+.caption {
+    font-size: 1rem; /* Ukuran font untuk caption */
+    margin-top: 0.5rem; /* Margin atas untuk jarak */
+    font-weight: bold; /* Teks tebal */
+    text-align: center; /* Pusatkan teks */
+}
+
+/* Tambahan Gaya untuk Produk */
+.border {
+    border: 1px solid #e5e7eb; /* Border untuk produk */
+}
+
+.rounded-lg {
+    border-radius: 0.5rem; /* Sudut membulat */
+}
+
+.shadow-lg {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Bayangan untuk elemen */
+}
+
+.container {
+    max-width: 1200px; /* Lebar maksimum kontainer */
+    margin: 0 auto; /* Pusatkan kontainer */
+    padding: 0 1rem; /* Padding untuk kontainer */
+}
+
+.text-center {
+    text-align: center; /* Pusatkan teks */
+}
+
+.bg-light {
+    background-color: #f8fafc; /* Warna latar belakang */
+}
+
+.bg-gray-200 {
+    background-color: #e5e7eb; /* Warna latar belakang abu-abu */
+}
+
+.bg-gray-800 {
+    background-color: #1f2937; /* Warna latar belakang abu-abu gelap */
+}
+
+.text-gray-600 {
+    color: #4b5563; /* Warna teks abu-abu */
+}
+
+.text-white {
+    color: white; /* Warna teks putih */
+}
+
+.text-base {
+    font-size: 1rem; /* Ukuran font dasar */
+}
+
+.font-bold {
+    font-weight: bold; /* Font tebal */
+}
+
+/* Gaya untuk tombol Detail */
+.bg-blue-500 {
+    background-color: #3b82f6; /* Warna latar belakang biru */
+}
+
+.hover\:bg-blue-600:hover {
+    background-color: #2563eb; /* Warna latar belakang biru saat hover */
+}
+
+.py-2 {
+    padding-top: 0.5rem; /* Padding atas */
+    padding-bottom: 0.5rem; /* Padding bawah */
+}
+
+.px-4 {
+    padding-left: 1rem; /* Padding kiri */
+    padding-right: 1rem; /* Padding kanan */
+}
+
+.rounded {
+    border-radius: 0.25rem; /* Sudut membulat */
+}
+
+/* Footer Styles */
+footer {
+    padding: 1rem; /* Padding untuk footer */
+}
