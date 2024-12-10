@@ -4,6 +4,12 @@
     <ul class="space-y-2">
 
         <li>
+            <button onclick="toggleDropdown('dashboardDropdown')"
+            class="dropdown-btn flex justify-between w-full py-2 px-4 bg-gray-700 rounded hover:bg-gray-600">
+                Dashboard 
+            </button>
+        </li>
+        <li>
             <button onclick="toggleDropdown('pesananDropdown')"
                 class="dropdown-btn flex justify-between w-full py-2 px-4 bg-gray-700 rounded hover:bg-gray-600">
                 Pesanan <i class="fas fa-chevron-down"></i>
