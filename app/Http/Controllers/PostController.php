@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         $data = Post::all();
-        return view('');
+        return view('lihat-jasa',compact("data"));
         // Select * from Post;
 
     }
@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambah-jasa');
     }
 
     /**
@@ -38,8 +38,40 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input
+        // dd($request->all());
+        $validated = $request->validate([
+            'nama_layanan' => 'required',
+            'kontak' => 'required',
+            'alamat' => 'required',
+            'image_url' => 'required|image|mimes:jpeg,jpg,png',
+            'kategori' => 'in:UMKM,Sekolah,Rumah Tangga,Pengangkutan',
+            'deskripsi_layanan' => 'required'
+        ]);
+    
+        try {
+            // Upload image
+            $image = $request->file('image_url');
+            $image->storeAs('public/posts', $image->hashName());
+    
+            // Create new post
+            Post::create([
+                'nama_layanan' => $request->nama_layanan,
+                'kontak' => $request->kontak,
+                'alamat' => $request->alamat,
+                'image_url' => $image->hashName(),
+                'alt'=> $image->getFilename(),
+                'kategori' => $request->kategori,
+                'deskripsi_layanan' => $request->deskripsi_layanan
+            ]);
+    
+            return redirect()->route('post.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Terjadi Kesalahan saat menyimpan data!']);
+        }
     }
+    
+
 
     /**
      * Display the specified resource.

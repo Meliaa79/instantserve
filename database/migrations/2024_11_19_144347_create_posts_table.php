@@ -21,8 +21,8 @@ return new class extends Migration
             $table->enum('kategori', ['UMKM', 'Sekolah', 'Rumah Tangga', 'Pengangkutan'])->default('UMKM');
             $table->string('kontak');
             $table->string('image_url');
-            $table->string('alt');
-            $table->foreignId('user_id')->constrained()->references('id')->on('users');; 
+            $table->string('alt')->nullable();
+            // $table->foreignId('user_id')->constrained()->references('id')->on('users');; 
             $table->timestamps();
             $table->softDeletes();
         });

@@ -27,9 +27,9 @@
                 Jasa <i class="fas fa-chevron-down"></i>
             </button>
             <div id="jasaDropdown" class="dropdown-container hidden space-y-2 ml-4">
-                <a href="{{ url('/tambah-jasa') }}" class="block py-1 hover:bg-gray-700 rounded">Tambah Jasa</a>
-                <a href="{{ url('/lihat-jasa') }}" class="block py-1 hover:bg-gray-700 rounded">Lihat Jasa</a>
-                <a href="{{ url('/edit-jasa') }}" class="block py-1 hover:bg-gray-700 rounded">Edit Jasa</a>
+                <a href="{{ route('post.create') }}" class="block py-1 hover:bg-gray-700 rounded">Tambah Jasa</a>
+                <a href="{{ route('post.index') }}" class="block py-1 hover:bg-gray-700 rounded">Lihat Jasa</a>
+                {{-- <a href="{{ route('post.edit') }}" class="block py-1 hover:bg-gray-700 rounded">Edit Jasa</a> --}}
             </div>
         </li>
         <li>

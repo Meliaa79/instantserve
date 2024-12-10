@@ -20,43 +20,21 @@
             <div class="main-section bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-2xl font-bold mb-6 text-gray-700">Daftar Jasa</h2>
 
-
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div
-                        class="card bg-gray-100 p-4 border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-200">
-                        <img src="{{ asset('images\kisspng-laundry-washing-machines-clothes-dryer-laundry-5abb444b924d96.8925375715222221555993-removebg-preview.png') }}"
-                            alt="Cuci" class="w-full h-60 object-cover rounded-t-md mb-4">
-                        <h3 class="text-lg font-semibold text-gray-800">Cuci</h3>
-                        <p class="text-gray-600">Kontak: <span class="font-medium">0812-3456-7890</span></p>
-                        <p class="text-gray-600">Waktu Pengerjaan: <span class="font-medium">2 Hari</span></p>
-                        <p class="text-gray-600">Deskripsi: Jasa cuci bersih untuk semua jenis pakaian.</p>
-                        <a href="/edit-jasa"
-                            class="mt-4 inline-block text-blue-500 hover:text-blue-700 font-semibold">Edit Jasa</a>
+                    @forelse ($data as $item)
+                    <div class="card bg-gray-100 p-4 border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-200">
+                        <img src="{{ asset('storage/posts/' . $item->image_url) }}" alt="{{ $item->alt }}" class="w-full h-60 object-cover rounded-t-md mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">{{ $item->nama_layanan }}</h3>
+                        <p class="text-gray-600">Kontak: <span class="font-medium">{{ $item->kontak }}</span></p>
+                        <p class="text-gray-600">Waktu Pengerjaan: <span class="font-medium">{{ $item->waktu_pengerjaan }}</span></p>
+                        <p class="text-gray-600">Deskripsi: {{ $item->deskripsi_layanan }}</p>
+                        <a href="{{ route('post.edit', $item->id) }}" class="mt-4 inline-block text-blue-500 hover:text-blue-700 font-semibold">Edit Jasa</a>
                     </div>
-
-                    <div
-                        class="card bg-gray-100 p-4 border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-200">
-                        <img src="{{ asset('images\Ilustrasi-setrika.jpg') }}" alt="Setrika"
-                            class="w-full h-60 object-cover rounded-t-md mb-4">
-                        <h3 class="text-lg font-semibold text-gray-800">Setrika</h3>
-                        <p class="text-gray-600">Kontak: <span class="font-medium">0812-3456-7890</span></p>
-                        <p class="text-gray-600">Waktu Pengerjaan: <span class="font-medium">1 Hari</span></p>
-                        <p class="text-gray-600">Deskripsi: Jasa setrika rapi untuk pakaian agar siap dipakai.</p>
-                        <a href="/edit-jasa"
-                            class="mt-4 inline-block text-blue-500 hover:text-blue-700 font-semibold">Edit Jasa</a>
+                    @empty
+                    <div class="col-span-3 text-center text-gray-700">
+                        <p>Tidak ada jasa tersedia</p>
                     </div>
-
-                    <div
-                        class="card bg-gray-100 p-4 border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-200">
-                        <img src="{{ asset('images\1682694358157-removebg-preview.png') }}" alt="Cuci dan Setrika"
-                            class="w-full h-60 object-cover rounded-t-md mb-4">
-                        <h3 class="text-lg font-semibold text-gray-800">Cuci dan Setrika</h3>
-                        <p class="text-gray-600">Kontak: <span class="font-medium">0812-3456-7890</span></p>
-                        <p class="text-gray-600">Waktu Pengerjaan: <span class="font-medium">3 Hari</span></p>
-                        <p class="text-gray-600">Deskripsi: Kombinasi layanan cuci dan setrika untuk kemudahan Anda.</p>
-                        <a href="/edit-jasa"
-                            class="mt-4 inline-block text-blue-500 hover:text-blue-700 font-semibold">Edit Jasa</a>
-                    </div>
+                    @endforelse
                 </div>
 
             </div>
@@ -64,6 +42,7 @@
     </div>
 
 </body>
+
 <script>
     document.querySelectorAll('.dropdown-btn').forEach(button => {
         button.addEventListener('click', () => {

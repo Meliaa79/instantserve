@@ -79,10 +79,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 @forelse ($data as $item)
                     <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="{{ asset('img/Housekeeping.jpg') }}" alt="{{ $item->alt }}" class="w-full h-48 object-cover">
+                        <img src="{{ asset('storage/posts/' . $item->image_url) }}" alt="{{ $item->alt }}"  class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="font-semibold text-gray-800">{{ $item->nama_layanan }}</h3>
-                            <p class="text-gray-600">{{ $item->user->name }}</p>
+                            {{-- <p class="text-gray-600">{{ $item->user->name }}</p> --}}
                         </div>
                     </div>
                 @empty

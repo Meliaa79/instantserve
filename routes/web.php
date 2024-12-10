@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\YourController; // Import YourController
@@ -50,13 +51,13 @@ Route::get('/edit-jasa', function () {
     return view('edit-jasa');
 });
 
-Route::get('/lihat-jasa', function () {
-    return view('lihat-jasa');
-});
+// Route::get('/lihat-jasa', function () {
+//     return view('lihat-jasa');
+// });
 
-Route::get('/tambah-jasa', function () {
-    return view('tambah-jasa');
-});
+// Route::get('/tambah-jasa', function () {
+//     return view('tambah-jasa');
+// });
 
 Route::get('/pesanan-hari-ini', function () {
     return view('pesanan-hari-ini');
@@ -110,3 +111,4 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('prof
 
 Route::get('/admin/profile', [ProfileController::class, 'showAdminProfile'])->name('admin.profile.show');
 
+Route::resource("post", PostController::class);
