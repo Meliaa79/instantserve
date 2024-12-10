@@ -46,7 +46,7 @@
                         <textarea id="deskripsi-toko" name="deskripsi-toko" rows="4" placeholder="Deskripsi tentang toko Anda..." required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">Toko yang menyediakan berbagai kebutuhan harian.</textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Simpan Perubahan</button>
+                    <button type="submit" class="w-full text-black py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" style="background-color: #81D8D0;">Simpan Perubahan</button>
                 </form>
             </div>
         </main>

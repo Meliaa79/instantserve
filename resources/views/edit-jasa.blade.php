@@ -52,7 +52,7 @@
                         <p class="text-sm text-gray-500 mt-1">Unggah gambar dalam format JPG, PNG, atau JPEG. Maksimal ukuran file 2MB.</p>
                     </div>
                     
-                    <button type="submit" class="w-full text-black py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" style="background-color: #81D8D0;">Upload Pesanan</button>
+                    <button type="submit" class="w-full text-black py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" style="background-color: #81D8D0;">Edit Jasa</button>
                 </form>
             </div>
         </main>
