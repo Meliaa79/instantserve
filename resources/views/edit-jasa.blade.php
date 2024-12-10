@@ -46,7 +46,13 @@
                         <textarea id="deskripsi-jasa" name="deskripsi-jasa" rows="4" placeholder="Deskripsi layanan jasa..." required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">Jasa cuci bersih untuk semua jenis pakaian.</textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Simpan Perubahan</button>
+                    <div class="mb-6">
+                        <label for="foto-jasa" class="block text-sm font-medium text-gray-700">Upload Foto Jasa:</label>
+                        <input type="file" id="foto-jasa" name="foto-jasa" accept="image/*" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <p class="text-sm text-gray-500 mt-1">Unggah gambar dalam format JPG, PNG, atau JPEG. Maksimal ukuran file 2MB.</p>
+                    </div>
+                    
+                    <button type="submit" class="w-full text-black py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" style="background-color: #81D8D0;">Upload Pesanan</button>
                 </form>
             </div>
         </main>

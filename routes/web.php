@@ -102,6 +102,10 @@ Route::get('/shop', function () {
     return view('shop');
 })->name('shop');
 
+Route::get('/upload-pesanan', function () {
+    return view('upload-pesanan');
+});
+
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::get('/admin/profile', [ProfileController::class, 'showAdminProfile'])->name('admin.profile.show');
