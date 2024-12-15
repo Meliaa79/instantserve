@@ -15,19 +15,22 @@ class GlobalController extends Controller
         return view('homepage', compact('data'));
     }
 
-    public function Search(SearchRequest $request)
-{
-    $request->validate([
-        'search' => 'required|string|min:1',
-    ]);
+    public function Search(Request $request)
+    {
+        // Validate the incoming search request
+        $request->validate([
+            'search' => 'required|string|min:1',  // Ensure search query has at least 1 character
+        ]);
 
-    $query = $request->input('search');
+        // Retrieve the search query from the request
+        $query = $request->input('search');
 
-    $search = Post::where('nama_layanan', 'like', "%{$query}%")
-        ->orWhere('kategori', 'like', "%{$query}%")
-        ->paginate();
+        // Perform the search with pagination (10 posts per page)
+        $search = Post::where('nama_layanan', 'like', "%{$query}%")
+            ->orWhere('kategori', 'like', "%{$query}%")
+            ->paginate(10);  // Adjust number of items per page as necessary
 
-    return view('Search.search', compact('search'));
-}
-    
+        // Return the search results to the 'Search.search' view
+        return view('Search.search', compact('search'));
+    }
 }

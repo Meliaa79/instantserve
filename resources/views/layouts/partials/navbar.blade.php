@@ -2,10 +2,10 @@
   <header class="bg-white shadow-md py-4">
     <div class="container mx-auto flex items-center justify-between px-4">
       <div class="text-lg font-bold">
-        <a href="{{route('index')}}">InstantServe</a>
+        <a href="{{route('homepage')}}">InstantServe</a>
       </div>
       <nav class="space-x-4">
-        <a href="{{route('index')}}" class="text-gray-700 hover:text-blue-500">Home</a>
+        <a href="{{route('homepage')}}" class="text-gray-700 hover:text-blue-500">Home</a>
         <a href="#" class="text-gray-700 hover:text-blue-500">Shop</a>
         <a href="#" class="text-gray-700 hover:text-blue-500">Categories</a>
         <a href="#" class="text-gray-700 hover:text-blue-500">Contact</a>

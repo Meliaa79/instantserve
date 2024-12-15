@@ -15,47 +15,89 @@
    @include('components.admin-navbar')
 
     <!-- Sidebar dan Konten Utama -->
-     <div class="flex">
-    @include('components.admin-sidebar')
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white h-screen p-4">
+            @include('components.admin-sidebar')
+        </div>
+
         <!-- Konten Utama -->
-        <div class="ml-64 pt-20 w-full p-6">
-            <div class="main-section bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold mb-6 text-gray-700">Edit Jasa</h2>
-
-                <!-- Form Edit Jasa -->
-                <form method="POST" class="bg-gray-100 p-6 rounded-lg shadow-inner">
-                    <h3 class="text-lg font-semibold mb-4 text-gray-600">Edit Detail Jasa</h3>
-                    
-                    <div class="mb-4">
-                        <label for="nama-jasa" class="block text-sm font-medium text-gray-700">Nama Jasa:</label>
-                        <input type="text" id="nama-jasa" name="nama-jasa" value="Cuci" placeholder="Masukkan nama jasa" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="kontak" class="block text-sm font-medium text-gray-700">Kontak:</label>
-                        <input type="text" id="kontak" name="kontak" value="0812-3456-7890" placeholder="Masukkan kontak" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="waktu-pengerjaan" class="block text-sm font-medium text-gray-700">Waktu Pengerjaan:</label>
-                        <input type="text" id="waktu-pengerjaan" name="waktu-pengerjaan" value="2 Hari" placeholder="Contoh: 2 Hari" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-
-                    <div class="mb-6">
-                        <label for="deskripsi-jasa" class="block text-sm font-medium text-gray-700">Deskripsi Jasa:</label>
-                        <textarea id="deskripsi-jasa" name="deskripsi-jasa" rows="4" placeholder="Deskripsi layanan jasa..." required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">Jasa cuci bersih untuk semua jenis pakaian.</textarea>
-                    </div>
-
-                    <div class="mb-6">
-                        <label for="foto-jasa" class="block text-sm font-medium text-gray-700">Upload Foto Jasa:</label>
-                        <input type="file" id="foto-jasa" name="foto-jasa" accept="image/*" required class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                        <p class="text-sm text-gray-500 mt-1">Unggah gambar dalam format JPG, PNG, atau JPEG. Maksimal ukuran file 2MB.</p>
-                    </div>
-                    
-                    <button type="submit" class="w-full text-black py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" style="background-color: #81D8D0;">Edit Jasa</button>
-                </form>
-            </div>
-        </main>
+        <div class="flex-1 p-6">
+            <h2 class="text-2xl font-bold mb-6">Edit Jasa</h2>
+        
+            <!-- Edit Form -->
+            <form action="{{ route('post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT') <!-- This is important for updating the resource -->
+                
+                <!-- Nama Layanan -->
+                <div class="mb-4">
+                    <label for="nama_layanan" class="block text-sm font-medium text-gray-700">Nama Layanan:</label>
+                    <input type="text" id="nama_layanan" name="nama_layanan" value="{{ old('nama_layanan', $post->nama_layanan) }}" placeholder="Masukkan nama layanan" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    @error('nama_layanan')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+        
+                <!-- Kontak -->
+                <div class="mb-4">
+                    <label for="kontak" class="block text-sm font-medium text-gray-700">Kontak:</label>
+                    <input type="text" id="kontak" name="kontak" value="{{ old('kontak', $post->kontak) }}" placeholder="Masukkan kontak" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    @error('kontak')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+        
+                <!-- Alamat -->
+                <div class="mb-4">
+                    <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat:</label>
+                    <input type="text" id="alamat" name="alamat" value="{{ old('alamat', $post->alamat) }}" placeholder="Masukkan alamat" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    @error('alamat')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+        
+                <!-- Kategori -->
+                <div class="mb-4">
+                    <label for="kategori" class="block text-sm font-medium text-gray-700">Kategori:</label>
+                    <select id="kategori" name="kategori" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="UMKM" {{ old('kategori', $post->kategori) == 'UMKM' ? 'selected' : '' }}>UMKM</option>
+                        <option value="Sekolah" {{ old('kategori', $post->kategori) == 'Sekolah' ? 'selected' : '' }}>Sekolah</option>
+                        <option value="Rumah Tangga" {{ old('kategori', $post->kategori) == 'Rumah Tangga' ? 'selected' : '' }}>Rumah Tangga</option>
+                        <option value="Pengangkutan" {{ old('kategori', $post->kategori) == 'Pengangkutan' ? 'selected' : '' }}>Pengangkutan</option>
+                    </select>
+                    @error('kategori')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+        
+                <!-- Deskripsi Layanan -->
+                <div class="mb-6">
+                    <label for="deskripsi_layanan" class="block text-sm font-medium text-gray-700">Deskripsi Layanan:</label>
+                    <textarea id="deskripsi_layanan" name="deskripsi_layanan" rows="4" placeholder="Deskripsi layanan..." required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('deskripsi_layanan', $post->deskripsi_layanan) }}</textarea>
+                    @error('deskripsi_layanan')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+        
+                <!-- Foto Jasa (Optional to change) -->
+                <div class="mb-6">
+                    <label for="image_url" class="block text-sm font-medium text-gray-700">Upload Foto Jasa:</label>
+                    <input type="file" id="image_url" name="image_url" accept="image/*" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <p class="text-sm text-gray-500 mt-1">Unggah gambar dalam format JPG, PNG, atau JPEG. Maksimal ukuran file 2MB.</p>
+                    @if($post->image_url)
+                        <div class="mt-2">
+                            <img src="{{ asset('storage/posts/' . $post->image_url) }}" alt="Current Image" class="w-32 h-32 object-cover rounded-md">
+                        </div>
+                    @endif
+                    @error('image_url')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+        
+                <button type="submit" class="w-full text-white py-2 px-4 rounded-md bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Update Jasa</button>
+            </form>
+        </div>
     </div>
 
     <script>

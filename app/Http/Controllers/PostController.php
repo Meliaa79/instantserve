@@ -36,40 +36,43 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        // Validasi input
+    // Validasi input
         // dd($request->all());
-        $validated = $request->validate([
-            'nama_layanan' => 'required',
-            'kontak' => 'required',
-            'alamat' => 'required',
-            'image_url' => 'required|image|mimes:jpeg,jpg,png',
-            'kategori' => 'in:UMKM,Sekolah,Rumah Tangga,Pengangkutan',
-            'deskripsi_layanan' => 'required'
-        ]);
-    
-        try {
-            // Upload image
+        public function store(Request $request)
+{
+    $validated = $request->validate([
+        'nama_layanan' => 'required',
+        'kontak' => 'required',
+        'alamat' => 'required',
+        'image_url' => 'nullable|image|mimes:jpeg,jpg,png',
+        'kategori' => 'in:UMKM,Sekolah,Rumah Tangga,Pengangkutan',
+        'deskripsi_layanan' => 'required'
+    ]);
+
+    try {
+        $post = new Post;
+
+        if ($request->hasFile('image_url')) {
             $image = $request->file('image_url');
             $image->storeAs('public/posts', $image->hashName());
-    
-            // Create new post
-            Post::create([
-                'nama_layanan' => $request->nama_layanan,
-                'kontak' => $request->kontak,
-                'alamat' => $request->alamat,
-                'image_url' => $image->hashName(),
-                'alt'=> $image->getFilename(),
-                'kategori' => $request->kategori,
-                'deskripsi_layanan' => $request->deskripsi_layanan
-            ]);
-    
-            return redirect()->route('post.index')->with(['success' => 'Data Berhasil Disimpan!']);
-        } catch (\Exception $e) {
-            return redirect()->back()->with(['error' => 'Terjadi Kesalahan saat menyimpan data!']);
+            $post->image_url = $image->hashName();
+            $post->alt = $image->getFilename();
         }
+
+        $post->nama_layanan = $request->nama_layanan;
+        $post->kontak = $request->kontak;
+        $post->alamat = $request->alamat;
+        $post->kategori = $request->kategori;
+        $post->deskripsi_layanan = $request->deskripsi_layanan;
+
+        $post->save();
+
+        return redirect()->route('post.index')->with(['success' => 'Data Berhasil Ditambahkan!']);
+    } catch (\Exception $e) {
+        return redirect()->back()->with(['error' => 'Terjadi Kesalahan saat menambahkan data!']);
     }
+}
+
     
 
 
@@ -92,7 +95,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Retrieve the post by ID
+    $post = Post::findOrFail($id);
+    
+    // Pass the post data to the edit view
+    return view('edit-jasa', compact('post'));  
     }
 
     /**
@@ -104,9 +111,45 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validasi input
+        $validated = $request->validate([
+            'nama_layanan' => 'required',
+            'kontak' => 'required',
+            'alamat' => 'required',
+            'image_url' => 'nullable|image|mimes:jpeg,jpg,png',
+            'kategori' => 'in:UMKM,Sekolah,Rumah Tangga,Pengangkutan',
+            'deskripsi_layanan' => 'required'
+        ]);
+    
+        try {
+            // Find the post by ID
+            $post = Post::findOrFail($id);
+    
+            // If a new image is uploaded, handle the image upload
+            if ($request->hasFile('image_url')) {
+                $image = $request->file('image_url');
+                $image->storeAs('public/posts', $image->hashName());
+                $post->image_url = $image->hashName();
+                $post->alt = $image->getFilename();
+            }
+    
+            // Update the post data
+            $post->nama_layanan = $request->nama_layanan;
+            $post->kontak = $request->kontak;
+            $post->alamat = $request->alamat;
+            $post->kategori = $request->kategori;
+            $post->deskripsi_layanan = $request->deskripsi_layanan;
+    
+            // Save the updated post
+            $post->save();
+    
+            // Redirect with success message
+            return redirect()->route('post.index')->with(['success' => 'Data Berhasil Diperbarui!']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => 'Terjadi Kesalahan saat memperbarui data!']);
+        }
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

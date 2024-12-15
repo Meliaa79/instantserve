@@ -112,3 +112,5 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('prof
 Route::get('/admin/profile', [ProfileController::class, 'showAdminProfile'])->name('admin.profile.show');
 
 Route::resource("post", PostController::class);
+
+

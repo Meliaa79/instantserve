@@ -18,7 +18,7 @@
         <img src="/img/Housekeeping.jpg" alt={{$item->alt}} class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="font-semibold text-gray-800">{{$item->nama_layanan}}</h3>
-          <p class="text-gray-600">{{$item->user->name}}</p>
+          {{-- <p class="text-gray-600">{{$item->user->name}}</p> --}}
         </div>
       </div>
       @empty

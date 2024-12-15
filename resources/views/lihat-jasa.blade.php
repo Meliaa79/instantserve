@@ -26,7 +26,6 @@
                         <img src="{{ asset('storage/posts/' . $item->image_url) }}" alt="{{ $item->alt }}" class="w-full h-60 object-cover rounded-t-md mb-4">
                         <h3 class="text-lg font-semibold text-gray-800">{{ $item->nama_layanan }}</h3>
                         <p class="text-gray-600">Kontak: <span class="font-medium">{{ $item->kontak }}</span></p>
-                        <p class="text-gray-600">Waktu Pengerjaan: <span class="font-medium">{{ $item->waktu_pengerjaan }}</span></p>
                         <p class="text-gray-600">Deskripsi: {{ $item->deskripsi_layanan }}</p>
                         <a href="{{ route('post.edit', $item->id) }}" class="mt-4 inline-block text-blue-500 hover:text-blue-700 font-semibold">Edit Jasa</a>
                     </div>
