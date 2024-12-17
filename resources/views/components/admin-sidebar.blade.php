@@ -4,10 +4,10 @@
     <ul class="space-y-2">
 
         <li>
-            <button onclick="toggleDropdown('dashboardDropdown')"
-            class="dropdown-btn flex justify-between w-full py-2 px-4 bg-gray-700 rounded hover:bg-gray-600">
-                Dashboard 
-            </button>
+            <a href="{{ route('dashboard') }}" 
+            class="flex justify-between w-full py-2 px-4 bg-gray-700 rounded hover:bg-gray-600">
+             Dashboard
+         </a>
         </li>
         <li>
             <button onclick="toggleDropdown('pesananDropdown')"
@@ -27,7 +27,6 @@
             <div id="jasaDropdown" class="dropdown-container hidden space-y-2 ml-4">
                 <a href="{{ route('post.create') }}" class="block py-1 hover:bg-gray-700 rounded">Tambah Jasa</a>
                 <a href="{{ route('post.index') }}" class="block py-1 hover:bg-gray-700 rounded">Lihat Jasa</a>
-                {{-- <a href="{{ route('post.edit') }}" class="block py-1 hover:bg-gray-700 rounded">Edit Jasa</a> --}}
             </div>
         </li>
     </ul>
