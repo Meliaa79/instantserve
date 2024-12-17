@@ -20,10 +20,14 @@
           </svg>
         </div>
       </form>
-
-        <a href="#" class="text-gray-700 hover:text-blue-500">
-          <img src="/img/profileIcon.png" class="w-20 h-20" >
-        </a>
+      <img src="/img/profileIcon.png" class="w-20 h-20" >
+      <a href="#" onclick="window.location.href='/profile'" class="text-gray-700 hover:text-blue-500">
+        @auth
+        {{ Auth::user()->username }}
+    @else
+        Guest
+    @endauth
+    </a>
       </div>
     </div>
   </header>

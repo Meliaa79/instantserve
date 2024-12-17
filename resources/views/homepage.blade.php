@@ -9,7 +9,7 @@
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    
     <title>@yield('title', 'InstantServe')</title>
 </head>
 <body class="bg-gray-100">
@@ -34,43 +34,51 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                 </form>
+                 <img src="/img/profileIcon.png" class="w-10 h-10 rounded-full" alt="Profile">
                 <a href="#" onclick="window.location.href='/profile'" class="text-gray-700 hover:text-blue-500">
-                    <img src="/img/profileIcon.png" class="w-10 h-10 rounded-full" alt="Profile">
+                    @auth
+                    {{ Auth::user()->username }}
+                @else
+                    Guest
+                @endauth
                 </a>
-
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
+  
     <div class="container mx-auto mt-6">
+      <h2 class="text-2xl font-bold mb-6">Kategori</h2>    
         <section class="container mx-auto px-4 py-8">
             <!-- Banner Section -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Banner 1 -->
                 <div class="bg-gray-800 text-white rounded-lg overflow-hidden relative">
-                    <img src="{{ asset('img/bannerLaundry.jpg') }}" alt="bannerLaundry" class="w-full object-fill opacity-60">
+                    <img src="{{ asset('img/bannerLaundry.jpg') }}" alt="Laundry Service" class="w-full h-56 object-cover opacity-60">
                     <div class="absolute top-0 left-0 p-6">
-                        <h2 class="text-2xl font-semibold">Laundry</h2>
-                        <a href="#" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Shop Now →</a>
+                        <h2 class="text-2xl font-semibold">UMKM</h2>
+                        <a href="{{ route('search') }}?search=UMKM" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Shop Now →</a>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 gap-6">
-                    <div class="bg-gray-800 text-white rounded-lg overflow-hidden relative">
-                        <img src="{{ asset('img/Housekeeping.avif') }}" alt="HouseKeeping" class="w-full h-32 object-cover opacity-60">
-                        <div class="absolute top-0 left-0 p-6">
-                            <h2 class="text-lg font-semibold">House Keeping</h2>
-                            <a href="#" class="mt-1 inline-block bg-blue-500 text-white px-4 py-1 rounded">Shop Now →</a>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 text-white rounded-lg overflow-hidden relative">
-                        <img src="{{ asset('img/PhotographyBanner.avif') }}" alt="Photography" class="w-full h-32 object-cover opacity-50">
-                        <div class="absolute top-0 left-0 p-6">
-                            <h2 class="text-lg font-semibold">Photography</h2>
-                            <a href="#" class="mt-1 inline-block bg-blue-500 text-white px-4 py-1 rounded">Shop Now →</a>
-                        </div>
+                
+                <!-- Banner 2 -->
+                <div class="bg-gray-800 text-white rounded-lg overflow-hidden relative">
+                    <img src="{{ asset('img/SekolahBanner.jpg') }}" alt="Laundry Service" class="w-full h-56 object-cover opacity-60">
+                    <div class="absolute top-0 left-0 p-6">
+                        <h2 class="text-2xl font-semibold">Sekolah</h2>
+                        <a href="{{ route('search') }}?search=Sekolah" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Shop Now →</a>
                     </div>
                 </div>
-            </div>
+            
+                <!-- Banner 3 -->
+                <div class="bg-gray-800 text-white rounded-lg overflow-hidden relative">
+                    <img src="{{ asset('img/Housekeeping.jpg') }}" alt="Laundry Service" class="w-full h-56 object-cover opacity-60">
+                    <div class="absolute top-0 left-0 p-6">
+                        <h2 class="text-2xl font-semibold">Rumah Tangga</h2>
+                        <a href="{{ route('search') }}?search=Rumah Tangga" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Shop Now →</a>
+                    </div>
+                </div>            
         </section>
 
         <!-- Services Section -->
@@ -82,7 +90,9 @@
                         <img src="{{ asset('storage/posts/' . $item->image_url) }}" alt="{{ $item->alt }}"  class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="font-semibold text-gray-800">{{ $item->nama_layanan }}</h3>
-                            {{-- <p class="text-gray-600">{{ $item->user->name }}</p> --}}
+                            <p class="text-gray-600">{{$item->kategori}}</p>
+                            <p class="text-gray-600">Kontak: <span class="font-medium">{{ $item->kontak }}</span></p>
+                            <p class="text-gray-600">{{ $item->user->name }}</p>
                         </div>
                     </div>
                 @empty
@@ -93,19 +103,16 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
-        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <img src="/img/logo2.png" class="h-32" alt="Instant Serve Logo">
-                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                    <li><a href="#" class="hover:underline me-4 md:me-6">About</a></li>
-                    <li><a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:underline me-4 md:me-6">Licensing</a></li>
-                    <li><a href="#" class="hover:underline">Contact</a></li>
-                </ul>
-            </div>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 Instant Serve™. All Rights Reserved.</span>
+    <footer class="bg-white shadow-md py-6 mt-6">
+        <div class="container mx-auto px-4 text-center text-gray-700">
+            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <img src="/img/logo2.png" class="h-32" alt="Instant Serve Logo">
+            <p>&copy; 2024 InstantServe. All rights reserved.</p>
+                <li><a href="#" class="hover:underline me-4 md:me-6">About</a></li>
+                <li><a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
+                <li><a href="#" class="hover:underline me-4 md:me-6">Licensing</a></li>
+                <li><a href="#" class="hover:underline">Contact</a></li>
         </div>
     </footer>
 

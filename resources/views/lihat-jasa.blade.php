@@ -19,25 +19,24 @@
         <div class="ml-64 pt-20 w-full p-6">
             <div class="main-section bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-2xl font-bold mb-6 text-gray-700">Daftar Jasa</h2>
-
+        
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @forelse ($data as $item)
                     <div class="card bg-gray-100 p-4 border border-gray-200 rounded-lg shadow hover:shadow-lg transition duration-200">
                         <img src="{{ asset('storage/posts/' . $item->image_url) }}" alt="{{ $item->alt }}" class="w-full h-60 object-cover rounded-t-md mb-4">
                         <h3 class="text-lg font-semibold text-gray-800">{{ $item->nama_layanan }}</h3>
                         <p class="text-gray-600">Kontak: <span class="font-medium">{{ $item->kontak }}</span></p>
-                        <p class="text-gray-600">Deskripsi: {{ $item->deskripsi_layanan }}</p>
-                        <a href="{{ route('post.edit', $item->id) }}" class="mt-4 inline-block text-blue-500 hover:text-blue-700 font-semibold">Edit Jasa</a>
+                        <p class="text-gray-600">Kategori: {{$item->kategori}}</p>
+                        <p class="text-gray-600">{{ $item->user->name }}</p>
+                        <a href="{{ route('post.edit', $item->id) }}" class="text-blue-500">Edit</a>
                     </div>
                     @empty
-                    <div class="col-span-3 text-center text-gray-700">
-                        <p>Tidak ada jasa tersedia</p>
-                    </div>
+                        <p class="text-gray-500">No services found.</p>
                     @endforelse
                 </div>
-
             </div>
         </div>
+        
     </div>
 
 </body>

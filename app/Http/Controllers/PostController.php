@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -14,9 +16,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data = Post::all();
-        return view('lihat-jasa',compact("data"));
-        // Select * from Post;
+        $user = Auth::user();
+        
+        // If the user is a service provider, show only their own services
+        if ($user->choice == 2) {
+            $data = Post::where('user_id', $user->id)->get();
+        } else {
+            // If the user is a service searcher, show all services
+            $data = Post::all();
+        }
+
+        return view('lihat-jasa', compact('data'));
 
     }
 
@@ -42,7 +52,7 @@ class PostController extends Controller
 {
     $validated = $request->validate([
         'nama_layanan' => 'required',
-        'kontak' => 'required',
+        'kontak' => 'required|numeric',
         'alamat' => 'required',
         'image_url' => 'nullable|image|mimes:jpeg,jpg,png',
         'kategori' => 'in:UMKM,Sekolah,Rumah Tangga,Pengangkutan',
@@ -64,7 +74,7 @@ class PostController extends Controller
         $post->alamat = $request->alamat;
         $post->kategori = $request->kategori;
         $post->deskripsi_layanan = $request->deskripsi_layanan;
-
+        $post->user_id = Auth::id(); // Get the currently authenticated user's ID
         $post->save();
 
         return redirect()->route('post.index')->with(['success' => 'Data Berhasil Ditambahkan!']);
@@ -114,7 +124,7 @@ class PostController extends Controller
         // Validasi input
         $validated = $request->validate([
             'nama_layanan' => 'required',
-            'kontak' => 'required',
+            'kontak' => 'required|numeric',
             'alamat' => 'required',
             'image_url' => 'nullable|image|mimes:jpeg,jpg,png',
             'kategori' => 'in:UMKM,Sekolah,Rumah Tangga,Pengangkutan',

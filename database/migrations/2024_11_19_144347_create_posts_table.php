@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('kontak');
             $table->string('image_url');
             $table->string('alt')->nullable();
-            // $table->foreignId('user_id')->constrained()->references('id')->on('users');; 
+            $table->foreignId('user_id')->constrained()->references('id')->on('users');; 
             $table->timestamps();
             $table->softDeletes();
         });
