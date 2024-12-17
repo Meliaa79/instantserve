@@ -16,9 +16,7 @@
             </button>
             <div id="pesananDropdown" class="dropdown-container hidden space-y-2 ml-4">
                 <a href="{{ url('/upload-pesanan') }}" class="block py-1 hover:bg-gray-700 rounded">Upload Pesanan</a>
-                <a href="{{ url('/pesanan-hari-ini') }}" class="block py-1 hover:bg-gray-700 rounded">Hari Ini</a>
-                <a href="{{ url('/pesanan-minggu-ini') }}" class="block py-1 hover:bg-gray-700 rounded">Minggu Ini</a>
-                <a href="{{ url('/pesanan-bulan-ini') }}" class="block py-1 hover:bg-gray-700 rounded">Bulan Ini</a>
+                <a href="{{ url('/daftar-pesanan') }}" class="block py-1 hover:bg-gray-700 rounded">Daftar Pesanan</a>
             </div>
         </li>
         <li>
@@ -30,15 +28,6 @@
                 <a href="{{ route('post.create') }}" class="block py-1 hover:bg-gray-700 rounded">Tambah Jasa</a>
                 <a href="{{ route('post.index') }}" class="block py-1 hover:bg-gray-700 rounded">Lihat Jasa</a>
                 {{-- <a href="{{ route('post.edit') }}" class="block py-1 hover:bg-gray-700 rounded">Edit Jasa</a> --}}
-            </div>
-        </li>
-        <li>
-            <button onclick="toggleDropdown('tokoDropdown')"
-                class="dropdown-btn flex justify-between w-full py-2 px-4 bg-gray-700 rounded hover:bg-gray-600">
-                Toko <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="tokoDropdown" class="dropdown-container hidden space-y-2 ml-4">
-                <a href="{{ url('/edit-toko') }}" class="block py-1 hover:bg-gray-700 rounded">Edit Toko</a>
             </div>
         </li>
     </ul>

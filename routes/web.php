@@ -59,17 +59,6 @@ Route::get('/edit-jasa', function () {
 //     return view('tambah-jasa');
 // });
 
-Route::get('/pesanan-hari-ini', function () {
-    return view('pesanan-hari-ini');
-});
-
-Route::get('/pesanan-minggu-ini', function () {
-    return view('pesanan-minggu-ini');
-});
-
-Route::get('/pesanan-bulan-ini', function () {
-    return view('pesanan-bulan-ini');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -105,6 +94,10 @@ Route::get('/shop', function () {
 
 Route::get('/upload-pesanan', function () {
     return view('upload-pesanan');
+});
+
+Route::get('/daftar-pesanan', function () {
+    return view('daftar-pesanan');
 });
 
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
