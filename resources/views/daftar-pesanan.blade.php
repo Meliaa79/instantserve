@@ -22,74 +22,37 @@
     <div class="ml-64 pt-20 w-full p-6">
         <!-- Pesanan Berdasarkan Rentang Tanggal -->
         <div class="bg-white p-4 rounded shadow-md mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Daftar Pesanan </h2>
+            <h2 class="text-2xl font-semibold mb-4">Daftar Pesanan</h2>
 
             <!-- Rentang Tanggal -->
-            <div class="mb-4">
-                <label for="start-date" class="block text-sm font-semibold">Tanggal Mulai:</label>
-                <input type="date" id="start-date" class="p-2 border border-gray-300 rounded-md">
-            </div>
-            <div class="mb-4">
-                <label for="end-date" class="block text-sm font-semibold">Tanggal Selesai:</label>
-                <input type="date" id="end-date" class="p-2 border border-gray-300 rounded-md">
-            </div>
+            <form action="{{ route('pesanan.index') }}" method="GET">
+                <div class="mb-4">
+                    <label for="start-date" class="block text-sm font-semibold">Tanggal Mulai:</label>
+                    <input type="date" name="start_date" id="start-date" class="p-2 border border-gray-300 rounded-md" value="{{ request('start_date') }}">
+                </div>
+                <div class="mb-4">
+                    <label for="end-date" class="block text-sm font-semibold">Tanggal Selesai:</label>
+                    <input type="date" name="end_date" id="end-date" class="p-2 border border-gray-300 rounded-md" value="{{ request('end_date') }}">
+                </div>
+            </form>
 
-            <!-- Pesanan -->
+            <!-- Daftar Pesanan -->
             <div id="order-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Daftar Pesanan (Pesanan Hari Ini dan Minggu Ini) -->
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-20">
-                    <h3 class="font-semibold">Caca</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-20</p>
-                    <p><strong>Deskripsi:</strong> Cuci dan Setrika.</p>
-                </div>
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-20">
-                    <h3 class="font-semibold">Chadeva</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-20</p>
-                    <p><strong>Deskripsi:</strong> Setrika.</p>
-                </div>
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-20">
-                    <h3 class="font-semibold">Dira</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-20</p>
-                    <p><strong>Deskripsi:</strong> Setrika.</p>
-                </div>
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-20">
-                    <h3 class="font-semibold">Indira</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-20</p>
-                    <p><strong>Deskripsi:</strong> Cuci dan Setrika.</p>
-                </div>
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-20">
-                    <h3 class="font-semibold">Janar</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-20</p>
-                    <p><strong>Deskripsi:</strong> Cuci dan Setrika.</p>
-                </div>
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-20">
-                    <h3 class="font-semibold">Janardana</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-20</p>
-                    <p><strong>Deskripsi:</strong> Setrika.</p>
-                </div>
-
-                <!-- Pesanan Minggu Ini -->
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-20">
-                    <h3 class="font-semibold">Caca</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-14</p>
-                    <p><strong>Deskripsi:</strong> Cuci dan Setrika</p>
-                </div>
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-14">
-                    <h3 class="font-semibold">Dira</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-14</p>
-                    <p><strong>Deskripsi:</strong> Setrika</p>
-                </div>
-                <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="2024-10-15">
-                    <h3 class="font-semibold">Rama</h3>
-                    <p><strong>Tanggal:</strong> 2024-10-15</p>
-                    <p><strong>Deskripsi:</strong> Setrika</p>
-                </div>
+                @foreach ($pesanans as $pesanan)
+                    <div class="card border border-gray-300 rounded p-4 hover:shadow-lg transition-transform transform hover:scale-105" style="background-color: #81D8D0;" data-date="{{ $pesanan->tanggal_pesanan }}">
+                    <h3 class="font-bold text-xl">{{ $pesanan->nama_customer }}</h3>
+                        <p><strong>Tanggal:</strong> {{ $pesanan->tanggal_pesanan }}</p>
+                        <p><strong>Deskripsi:</strong> {{ $pesanan->deskripsi_pesanan }}</p>
+                    </div>
+                @endforeach
             </div>
 
             <!-- Pesan jika Tidak Ada Pesanan -->
-            <div class="text-center mt-4 text-lg text-gray-500 hidden" id="no-data-message">
-                Belum ada pesanan dalam rentang tanggal ini.
-            </div>
+            @if($pesanans->isEmpty())
+                <div class="text-center mt-4 text-lg text-gray-500">
+                    Belum ada pesanan dalam rentang tanggal ini.
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -102,7 +65,7 @@
     function filterOrders() {
         const startDate = document.getElementById('start-date').value;
         const endDate = document.getElementById('end-date').value;
-        const orders = document.querySelectorAll('.card, .card-b');
+        const orders = document.querySelectorAll('.card');
         const noDataMessage = document.getElementById('no-data-message');
         let foundOrders = false;
 
@@ -133,21 +96,6 @@
         }
     }
 </script>
-<script>
-    document.querySelectorAll('.dropdown-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            const dropdown = button.nextElementSibling;
-            dropdown.classList.toggle('hidden');
-        });
-    });
 
-    document.querySelectorAll('.day-container').forEach(dayContainer => {
-        const cardContainer = dayContainer.querySelector('.card-container');
-        const noDataMessage = dayContainer.querySelector('.no-data');
-        if (cardContainer.children.length === 0) {
-            noDataMessage.classList.remove('hidden');
-        }
-    });
-</script>
 </body>
 </html>
