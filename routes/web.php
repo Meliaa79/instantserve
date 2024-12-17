@@ -9,7 +9,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KTPController;
 use App\Http\Controllers\GlobalController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\PesananController;
 
 Route::get('/', function () {
     return view('landing.index'); // Ensure this view exists
@@ -99,6 +99,10 @@ Route::get('/upload-pesanan', function () {
 Route::get('/daftar-pesanan', function () {
     return view('daftar-pesanan');
 });
+
+Route::get('/daftar-pesanan', [PesananController::class, 'index'])->name('pesanan.index');
+
+Route::post('/upload-pesanan', [PesananController::class, 'store'])->name('upload.pesanan');
 
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
