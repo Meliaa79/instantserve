@@ -21,7 +21,7 @@
                 <a href="{{ route('homepage') }}">InstantServe</a>
             </div>
                 <nav class="space-x-4">
-                <a href="{{ route('homepage') }}" class="text-gray-700 hover:text-blue-500">Rumah Baru</a>
+                <a href="{{ route('homepage') }}" class="text-gray-700 hover:text-blue-500">Rumah lagi</a>
                 <a href="{{ route('shop') }}" class="text-gray-700 hover:text-blue-500">Shop</a>
                 <a href="{{ route('favorite') }}" class="text-gray-700 hover:text-blue-500">Favorite</a>
                 <a href="#" class="text-gray-700 hover:text-blue-500">Contact</a>
