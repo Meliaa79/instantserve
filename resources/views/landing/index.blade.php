@@ -40,7 +40,7 @@
       <img src="assets/img/logo.png" alt="Logo" class="w-12 h-12 mr-3"> InstantServe
     </a>
     <div class="hidden md:flex space-x-8">
-      <a href="#hero" class="text-gray-800 hover:text-teal-600 font-semibold">Rumah</a>
+      <a href="#hero" class="text-gray-800 hover:text-teal-600 font-semibold">Home</a>
       <a href="#layanan" class="text-gray-800 hover:text-teal-600 font-semibold">Services</a>
       <a href="#about" class="text-gray-800 hover:text-teal-600 font-semibold">Tentang</a>
       <a href="#footer" class="text-gray-800 hover:text-teal-600 font-semibold">Kontak</a>
