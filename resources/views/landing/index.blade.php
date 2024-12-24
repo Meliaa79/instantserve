@@ -43,7 +43,7 @@
       <a href="#hero" class="text-gray-800 hover:text-teal-600 font-semibold">Rumah Lagi</a>
       <a href="#layanan" class="text-gray-800 hover:text-teal-600 font-semibold">Services</a>
       <a href="#about" class="text-gray-800 hover:text-teal-600 font-semibold">Tentang</a>
-      <a href="#footer" class="text-gray-800 hover:text-teal-600 font-semibold">Contact</a>
+      <a href="#footer" class="text-gray-800 hover:text-teal-600 font-semibold">Kontak</a>
     </div>
     <div class="space-x-4">
       <a href="{{ route('login') }}" class="px-4 py-2 text-white bg-teal-600 border-2 border-teal-600 rounded-lg hover:bg-white hover:text-black transition duration-300">Login</a>
